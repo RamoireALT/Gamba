@@ -1,0 +1,171 @@
+/* Reset and general */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0e0e0e;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #111;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 255, 128, 0.15);
+}
+.navbar h1 {
+  font-size: 24px;
+}
+#nav-buttons button {
+  background-color: #00c16a;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#nav-buttons button:hover {
+  background-color: #00a75a;
+}
+
+/* Game Tiles */
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 50px;
+  max-width: 1200px;
+  margin: auto;
+}
+.game-tile {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+  cursor: not-allowed;
+}
+.game-tile:hover {
+  transform: scale(1.05);
+}
+.title {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 5px #000;
+}
+.tag {
+  position: absolute;
+  top: 10px;
+  left: -40px;
+  background: rgba(255, 0, 0, 0.85);
+  color: white;
+  padding: 5px 40px;
+  transform: rotate(-45deg);
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background-color: #1a1a1a;
+  padding: 25px;
+  border-radius: 15px;
+  width: 350px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+}
+.modal-content h2 {
+  margin-top: 0;
+}
+.modal-content input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #222;
+  color: #fff;
+}
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00c16a;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background-color: #00a75a;
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Profile display */
+.profile-info {
+  text-align: center;
+}
+.profile-info p {
+  margin: 10px 0;
+}
+.progress-bar {
+  width: 100%;
+  height: 15px;
+  background: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, #00ff99, #00cc66);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+.profile-balance {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+.cashback-display {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+.cashback-eligible {
+  color: #0f0;
+  font-weight: bold;
+}
