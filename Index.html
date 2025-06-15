@@ -1,39 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gamba 🎰</title>
-  <link rel="stylesheet" href="Styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WƎNDER</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Minimal style overrides for profile display */
+    #profile-display {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: white;
+      cursor: pointer;
+    }
+    #profile-display span {
+      font-weight: bold;
+    }
+    #redeemCashbackBtn {
+      background: #0f62fe;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    #redeemCashbackBtn:hover {
+      background: #0353e9;
+    }
+    /* Popup fixes */
+    .popup-box form input {
+      display: block;
+      margin: 10px 0;
+      width: 90%;
+      padding: 8px;
+    }
+    .popup-box form button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <h1>🎰 Gamba</h1>
-    <div id="nav-buttons">
-      <button id="login-btn">Login</button>
-    </div>
-  </nav>
+  <header class="header">
+    <h1 class="logo-text" id="logo-click" style="cursor: pointer;">WƎNDER</h1>
+    <nav class="nav-links">
+      <a href="#" id="store-link">Store</a>
+      <a href="#" id="gambling-link">Gambling</a>
+    </nav>
 
-  <div class="game-container">
-    <div class="game-tile" style="background-image: url('Images/mines.jpg');">
-      <span class="tag">Coming soon...</span>
-      <div class="title">Mines</div>
+    <!-- Login button (default) -->
+    <button id="open-auth-popup" class="login-btn">Login</button>
+
+    <!-- Profile display (hidden by default) -->
+    <div id="profile-display" style="display:none;">
+      <span id="profileName"></span>
+      <span>Balance: <span id="profileBalance"></span></span>
+      <span>Level: <span id="profileLevel"></span></span>
+      <span>XP: <span id="profileXP"></span></span>
+      <span>Cashback: <span id="profileCashback"></span></span>
+      <button id="redeemCashbackBtn" style="display:none;">Redeem Cashback</button>
+      <button id="logoutBtn">Logout</button>
     </div>
-    <div class="game-tile" style="background-image: url('Images/coinflip.jpg');">
-      <span class="tag">Coming soon...</span>
-      <div class="title">Coinflip</div>
-    </div>
-    <div class="game-tile" style="background-image: url('Images/cases.jpg');">
-      <span class="tag">Coming soon...</span>
-      <div class="title">Cases</div>
-    </div>
-    <div class="game-tile" style="background-image: url('Images/dice.jpg');">
-      <span class="tag">Coming soon...</span>
-      <div class="title">Dice</div>
+  </header>
+
+  <main class="content">
+    <!-- Home Section (default) -->
+    <section id="home-section" class="section">
+      <p style="text-align:center; margin-top: 100px; font-size: 1.4rem;">
+        👋 Welcome to <strong>WƎNDER Web</strong><br />Your gateway to unique services and games.
+      </p>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store-section" class="section hidden">
+      <h2>Store</h2>
+      <div class="product">
+        <h3>Custom Discord Bot</h3>
+        <p><strong>Price:</strong> €5</p>
+        <p><strong>In Stock:</strong> Unlimited</p>
+        <button class="buy-btn">Buy</button>
+      </div>
+    </section>
+
+    <!-- Gambling Section -->
+    <section id="gambling-section" class="section hidden">
+      <h2>Mines Game</h2>
+      <p>
+        Choose between 1 and 24 mines on a 5x5 grid.<br />
+        Bet from €0.10 up to €10,000.<br />
+        Click safe tiles and cash out any time to win!
+      </p>
+      <button class="play-btn">Play Mines</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 WƎNDER. All rights reserved.</p>
+  </footer>
+
+  <!-- Login/Register/Reset popup -->
+  <div id="auth-popup" class="popup hidden">
+    <div class="popup-overlay"></div>
+    <div class="popup-box">
+      <div class="tab-header">
+        <span id="tab-label">Login</span>
+        <button id="close-popup" class="close-btn">&times;</button>
+      </div>
+
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+        <button class="tab-btn" data-tab="reset">Forgot Password</button>
+      </div>
+
+      <div id="login" class="tab-content active">
+        <form id="login-form">
+          <input type="text" placeholder="Username or Email" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+
+      <div id="register" class="tab-content">
+        <form id="register-form">
+          <input type="text" placeholder="Username" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <button type="submit">Register</button>
+        </form>
+      </div>
+
+      <div id="reset" class="tab-content">
+        <form id="reset-form">
+          <input type="password" placeholder="Current Password" required />
+          <input type="password" placeholder="New Password" required />
+          <input type="password" placeholder="Confirm New Password" required />
+          <button type="submit">Reset Password</button>
+        </form>
+      </div>
+
+      <div class="discord-separator"><span>OR</span></div>
+
+      <button id="discord-login-btn">
+        <img src="discord.png" alt="Discord" class="discord-icon" />
+        Login with Discord
+      </button>
     </div>
   </div>
-
-  <!-- Modals for Login/Register/Forgot/Profile -->
-  <div id="modal-container"></div>
 
   <script src="script.js"></script>
 </body>
